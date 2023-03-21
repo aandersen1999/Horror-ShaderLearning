@@ -7,8 +7,8 @@ public class GameMaster : MonoBehaviour
     public static GameMaster Instance { get; private set; }
     public AudioManager Audio_Manager { get; private set; }
 
-    public AudioClip[] songs;
-    private int counter = 0;
+    [SerializeField] private AudioClip bgm;
+
 
     private void Awake()
     {
@@ -21,12 +21,14 @@ public class GameMaster : MonoBehaviour
         Audio_Manager = GetComponent<AudioManager>();
     }
 
+    private void Start()
+    {
+        Audio_Manager.OverrideBGM(bgm);
+    }
+
+
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            Audio_Manager.OverrideBGM(songs[counter]);
-            counter = counter == songs.Length - 1 ? 0 : counter + 1;
-        }
+        
     }
 }
