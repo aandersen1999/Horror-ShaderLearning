@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Interactable : MonoBehaviour
     [Tooltip("Timer to destroy object. Only applies to destroy types aftertimer and timeafterinteract")]
     [SerializeField]
     private float timer = 5.0f;
+
+    public UnityEvent OnInteract;
 
     #region Monobehavior
     protected void Awake()
@@ -38,6 +41,7 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public virtual void Interact()
     {
+        OnInteract.Invoke();
 
         switch (destroyType)
         {
