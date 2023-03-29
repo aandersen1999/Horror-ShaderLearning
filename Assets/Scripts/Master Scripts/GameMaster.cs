@@ -4,35 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameMaster : MonoBehaviour
+public class GameMaster : Singleton<GameMaster>
 {
-    public static GameMaster Instance { get; private set; }
-    public AudioManager Audio_Manager { get; private set; }
-    public UIMaster UIMaster { get; private set; }
+    private AudioManager audio_Manager;
+    public AudioManager Audio_Manager { get { return audio_Manager; } }
     public Player PlayerInstance { get; private set; }
 
     [SerializeField] private AudioClip bgm;
-    [SerializeField] private List<SceneData> datas = new List<SceneData>();
+    [SerializeField] private List<SceneData> datas = new();
     [SerializeField] private GameObject UIPrefab;
 
+    public event Action<Player> OnSetNewPlayer;
+
     #region MonoBehavior
-    private void Awake()
+    protected override void Awake()
     {
-        if(Instance != null && Instance != this)
+        base.Awake();
+
+        if(!TryGetComponent(out audio_Manager))
         {
-            Destroy(gameObject);
-            return;
+            audio_Manager = gameObject.AddComponent<AudioManager>();
         }
+    }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        Audio_Manager = GetComponent<AudioManager>();
-        UIMaster = GetComponent<UIMaster>();
-
-        GameObject UI = Instantiate(UIPrefab);
-        DontDestroyOnLoad(UI);
-        UIMaster.SetUIContainer(UI.GetComponent<UIContainer>());
+    private void Start()
+    {
+        Instantiate(UIPrefab);
     }
 
     private void OnEnable()
@@ -45,12 +42,6 @@ public class GameMaster : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void Start()
-    {
-
-    }
-
-
     private void Update()
     {
         
@@ -59,7 +50,6 @@ public class GameMaster : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        UIMaster.BlackScreen(false);
 
         try
         {
@@ -82,11 +72,11 @@ public class GameMaster : MonoBehaviour
     public void SetPlayer(Player player)
     {
         PlayerInstance = player;
+        OnSetNewPlayer?.Invoke(player);
     }
 
     public void ChangeScene(int index)
     {
-        UIMaster.BlackScreen(true);
         SceneManager.LoadScene(index);
     }
 }

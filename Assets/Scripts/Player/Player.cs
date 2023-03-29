@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,8 +52,11 @@ public class Player : MonoBehaviour
 
     private InputActions control;
     private InputActions.PlayerMapActions actions;
-    private Interactable interactObject;
+    [SerializeField]private Interactable interactObject;
     public Interactable InteractObject { get { return interactObject; } }
+
+    public event Action OnFoundInteractable;
+    public event Action OnLostInteractable;
 
     #region Monobehavior
     private void Awake()
@@ -98,6 +102,8 @@ public class Player : MonoBehaviour
         {
             control.Dispose();
         }
+        OnFoundInteractable = null;
+        OnLostInteractable = null;
     }
 
     private void Update()
@@ -360,6 +366,8 @@ public class Player : MonoBehaviour
     private void CheckForObject()
     {
         int layermask = 1 << 6;
+        bool sawInteractableLastFrame = interactObject != null;
+
         interactObject = null;
 
         if (Physics.Raycast(camTransform.position, camTransform.TransformDirection(Vector3.forward), out RaycastHit hit, checkObjectRange, layermask))
@@ -367,7 +375,17 @@ public class Player : MonoBehaviour
             if(hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out Interactable interact))
             {
                 interactObject = interact;
+                if (!sawInteractableLastFrame)
+                    OnFoundInteractable?.Invoke();
             }
+            else if (sawInteractableLastFrame)
+            {
+                OnLostInteractable?.Invoke();
+            }
+        }
+        else if (sawInteractableLastFrame)
+        {
+            OnLostInteractable?.Invoke();
         }
     }
 

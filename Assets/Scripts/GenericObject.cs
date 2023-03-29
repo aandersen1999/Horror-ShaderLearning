@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GenericObject : Interactable
 {
@@ -35,7 +34,7 @@ public class GenericObject : Interactable
     {
         if (displayMessage)
         {
-            GameMaster.Instance.UIMaster.DisplayEventMessage(message);
+            UIMaster.Instance.DisplayEventMessage(message);
         }
         if (playSound)
         {
