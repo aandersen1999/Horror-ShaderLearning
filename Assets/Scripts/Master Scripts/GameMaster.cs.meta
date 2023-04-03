@@ -3,7 +3,9 @@ guid: ef3a3a8a013fbe54e84ddc432d897942
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bgm: {instanceID: 0}
+  - UIPrefab: {fileID: 2589814459748122967, guid: 67560ddfb996df04db6ec422f55974f0, type: 3}
   executionOrder: -20
   icon: {instanceID: 0}
   userData: 

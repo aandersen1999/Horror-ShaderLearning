@@ -7158,7 +7158,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29238
+  m_Name: pb_Mesh29258
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7427,6 +7427,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7867867181322040758, guid: 5deb02fd32c505f4abb5238967cda712, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8878951904130413328, guid: 5deb02fd32c505f4abb5238967cda712, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7474,6 +7478,10 @@ PrefabInstance:
     - target: {fileID: 8878951904130413330, guid: 5deb02fd32c505f4abb5238967cda712, type: 3}
       propertyPath: m_Name
       value: Radio Real Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878951904130413330, guid: 5deb02fd32c505f4abb5238967cda712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5deb02fd32c505f4abb5238967cda712, type: 3}
@@ -8445,13 +8453,25 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -8318008737886792259, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7661559805543349951, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -6630347030146395831, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4778431885556448104, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717203929141819119, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2173551787484406057, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8477,6 +8497,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3514589426151096271, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3523613482686280691, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -8486,6 +8510,22 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5267857266128688689, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082844159730614712, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382299677353316909, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841953421609613329, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380298976173532154, guid: c0c9d294ae2f6ee479aa1276009fe602, type: 3}
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}

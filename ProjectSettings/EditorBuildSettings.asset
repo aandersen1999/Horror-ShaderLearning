@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DreamBedroom/DreamBedroom.unity
     guid: 4f3501630b202ed4f9e689efd9a03b9e
   - enabled: 1
+    path: Assets/Scenes/UnderGround.unity
+    guid: 30be2c0f27fe3d5439a84cac899ad80e
+  - enabled: 1
     path: Assets/Scenes/Hub.unity
     guid: 46d3ebcb77217da429f9395dac48eb9a
   m_configObjects: {}

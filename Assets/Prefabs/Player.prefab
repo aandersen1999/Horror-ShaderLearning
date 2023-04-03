@@ -54,7 +54,6 @@ MonoBehaviour:
   stamina: 100
   staminaDrain: 14
   staminaGain: 14
-  souls: 0
   walkSpeed: 5
   runSpeed: 16
   jumpHeight: 4
@@ -63,7 +62,6 @@ MonoBehaviour:
   gravity: 15
   terminalGravityVel: -15
   cam: {fileID: 258192712110296267}
-  eyeSight: {fileID: 0}
   camTransform: {fileID: 258192712110296268}
   fov: 60
   mouseSensitivity: 0.1
@@ -72,6 +70,7 @@ MonoBehaviour:
   checkObjectRange: 3
   lockCamera: 0
   intendedVel: {x: 0, y: 0}
+  interactObject: {fileID: 0}
 --- !u!114 &3380560802067052818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +115,7 @@ AudioSource:
   m_GameObject: {fileID: 258192711645894792}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 869495839891312036, guid: 156798490ee72484e8fc92157c8eb7d3, type: 2}
+  OutputAudioMixerGroup: {fileID: 5228150808531172732, guid: 156798490ee72484e8fc92157c8eb7d3, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -311,7 +310,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

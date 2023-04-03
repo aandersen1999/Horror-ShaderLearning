@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public event Action OnBgmChange;
+
+    [SerializeField] private AudioMixer mixer;
+    public AudioMixer Mixer { get { return mixer; } }
 
     private AudioSource audioSource;
 

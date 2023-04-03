@@ -14,27 +14,17 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &-3316491139282672092
+--- !u!244 &-2210149544983466794
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_EffectID: c8032c190ea79224887115a311a45575
-  m_EffectName: Echo
-  m_MixLevel: b9f0dd84afcd7fe45a67ddddac2f2f24
-  m_Parameters:
-  - m_ParameterName: Delay
-    m_GUID: 75ef3090ae74f464fa42d57df28bed8f
-  - m_ParameterName: Decay
-    m_GUID: ebb39cd23b5f3694380694441dfb7c12
-  - m_ParameterName: Max channels
-    m_GUID: c0b1a9bfa818c3a4c80b866d0b976790
-  - m_ParameterName: Drymix
-    m_GUID: caf0142228943614781fa9b49024d0fb
-  - m_ParameterName: Wetmix
-    m_GUID: 895dec899a1bb7248be11594de599f37
+  m_EffectID: 65221554c6badaa4a81fb8e4c75d186a
+  m_EffectName: Attenuation
+  m_MixLevel: d3fd5ebfd4181aa409c3e160780fa92f
+  m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
@@ -59,6 +49,7 @@ AudioMixerController:
     - 7e3d0c9f1a257a54892350cdbd4270bf
     - 90271b002cbda8049bce720fb49f5cc1
     - c7885428310149d45a46cdc17bdf20ce
+    - 62809ee33a760d34d919fb003e3a7f2f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -124,13 +115,32 @@ AudioMixerGroupController:
   m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c7885428310149d45a46cdc17bdf20ce
-  m_Children: []
+  m_Children:
+  - {fileID: 5228150808531172732}
   m_Volume: b9e2733b8c17ca24ba01b54db0e5b49f
   m_Pitch: 7c5afd00492800f408a652d8cb8fe45e
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -4232629068658375820}
-  - {fileID: -3316491139282672092}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &5228150808531172732
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Footsteps
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 62809ee33a760d34d919fb003e3a7f2f
+  m_Children: []
+  m_Volume: c2e5ba697bd52324ab0df9a7bae6de4e
+  m_Pitch: 7ce46276086c8ee44b72d889147444eb
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2210149544983466794}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0

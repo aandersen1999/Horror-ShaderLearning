@@ -32,7 +32,10 @@ public class UIMaster : Singleton<UIMaster>
 
     private void OnDisable()
     {
-        GameMaster.Instance.OnSetNewPlayer -= OnSetNewPlayer;
+        if (!GameMaster.InstanceIsNull())
+        {
+            GameMaster.Instance.OnSetNewPlayer -= OnSetNewPlayer;
+        }
         SceneManager.sceneLoaded -= OnSceneChange;
     }
 

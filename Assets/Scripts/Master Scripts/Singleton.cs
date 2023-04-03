@@ -38,4 +38,9 @@ public class Singleton<T> : MonoBehaviour where T : Component
             Destroy(gameObject);
         }
     }
+
+    public static bool InstanceIsNull()
+    {
+        return instance == null;
+    }
 }
