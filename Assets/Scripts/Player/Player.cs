@@ -390,6 +390,16 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
+    #region misc
+    public void ForceSetPositionAndRotation(Vector3 pos, Quaternion rot)
+    {
+        //This is so dumb, but it does work and it's the only way I can think of to make it work...
+        cc.enabled = false;
+        transform.SetPositionAndRotation(pos, rot);
+        cc.enabled = true;
+    }
+    #endregion
 }
 
 public enum PlayerState : byte
