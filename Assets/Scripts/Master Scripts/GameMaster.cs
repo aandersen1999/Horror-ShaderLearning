@@ -15,6 +15,7 @@ public class GameMaster : Singleton<GameMaster>
     [SerializeField] private GameObject UIPrefab;
 
     public event Action<Player> OnSetNewPlayer;
+    public event Action<Camera> OnChangeMainCam;
 
     #region MonoBehavior
     protected override void Awake()
@@ -73,6 +74,11 @@ public class GameMaster : Singleton<GameMaster>
     {
         PlayerInstance = player;
         OnSetNewPlayer?.Invoke(player);
+    }
+
+    public void SetMainCamera(Camera cam)
+    {
+        OnChangeMainCam?.Invoke(cam);
     }
 
     public void ChangeScene(int index)

@@ -18,12 +18,6 @@ public class Singleton<T> : MonoBehaviour where T : Component
                     var singleton = (GameObject) Resources.Load($"Static Prefabs/{typeof(T).Name}", typeof(GameObject));
                     Instantiate(singleton);
                     instance = singleton.GetComponent<T>();
-
-                    /*GameObject obj = new()
-                    {
-                        name = typeof(T).Name
-                    };
-                    instance = obj.AddComponent<T>();*/
                 }
             }
             return instance;

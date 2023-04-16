@@ -30,10 +30,12 @@ public class Player : MonoBehaviour
     [SerializeField, Range(60.0f, 100.0f)] private float fov = 60.0f;
     [SerializeField] private float mouseSensitivity = 2.0f;
     [SerializeField] private float maxLookAngle = 85.0f;
-    [SerializeField] private float eyeSightRange = 8.0f;
-    [SerializeField] private float checkObjectRange = 3.0f;
 
     [SerializeField] private bool lockCamera = false;
+
+    [Header("Raycast Ranges")]
+    [SerializeField] private float snapToGroundRange = 5.0f;
+    [SerializeField] private float checkObjectRange = 3.0f;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -156,6 +158,7 @@ public class Player : MonoBehaviour
                 break;
         }
 
+        Vector3 vel = CalcMovement();
         cc.Move(CalcMovement() * Time.deltaTime);
     }
 
@@ -164,10 +167,12 @@ public class Player : MonoBehaviour
         cam.fieldOfView = fov;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(camTransform.position, camTransform.forward * checkObjectRange);
+        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * snapToGroundRange);
+
     }
     #endregion
 
@@ -193,7 +198,6 @@ public class Player : MonoBehaviour
     private void AffectedGravity()
     {
         verticalVel = (cc.isGrounded) ? -1.0f : Mathf.MoveTowards(verticalVel, terminalGravityVel, gravity * Time.deltaTime);
-            //GameMath.ApproachDelta(verticalVel, terminalGravityVel, gravity);
     }
 
     private Vector3 CalcMovement()
@@ -211,7 +215,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Vector3 output = new Vector3(move.x, 0, move.y);
+        Vector3 output = new(move.x, 0, move.y);
         output = transform.TransformDirection(output) * walkSpeed;
         intendedVel = new Vector2(output.x, output.z);
     }
@@ -226,9 +230,7 @@ public class Player : MonoBehaviour
     {
         Vector2 vel = horizontalVel;
         vel = Vector2.MoveTowards(vel, Vector2.zero, acceleration * Time.deltaTime);
-        //GameMath.ApproachDelta(vel, Vector2.zero, acceleration);
         vel = Vector2.MoveTowards(vel, intendedVel, (acceleration * 2) * Time.deltaTime);
-            //GameMath.ApproachDelta(vel, intendedVel, acceleration * 2);
         SetHVel(vel);
     }
 
@@ -239,12 +241,13 @@ public class Player : MonoBehaviour
             SetPlayerState(PlayerState.Jumping);
             return true;
         }
-        if (!cc.isGrounded)
+        if (!SnapToGround(out float dist))
         {
             SetPlayerState(PlayerState.FreeFall);
             return true;
         }
 
+        transform.position += Vector3.down * dist;
         return false;
     }
 
@@ -387,6 +390,17 @@ public class Player : MonoBehaviour
         {
             OnLostInteractable?.Invoke();
         }
+    }
+
+    private bool SnapToGround(out float distance)
+    {
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out RaycastHit hit, snapToGroundRange))
+        {
+            distance = hit.distance;
+            return true;
+        }
+        distance = 0.0f;
+        return false;
     }
 
     #endregion
