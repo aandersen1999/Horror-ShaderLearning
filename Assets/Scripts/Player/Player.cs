@@ -284,7 +284,6 @@ public class Player : MonoBehaviour
         bool stopped = false;
 
         horizontalVel = Vector2.MoveTowards(horizontalVel, Vector2.zero, acceleration * Time.deltaTime);
-            //GameMath.ApproachDelta(horizontalVel, Vector2.zero, acceleration);
 
         if (intendedMag != 0)
         {
@@ -334,7 +333,6 @@ public class Player : MonoBehaviour
         Vector2 intendedAir = intendedVel.normalized * walkSpeed;
 
         horizontalVel = Vector2.MoveTowards(horizontalVel, intendedAir, (acceleration / 4) * Time.deltaTime);
-            //GameMath.ApproachDelta(horizontalVel, intendedAir, acceleration / 4);
 
         SetHVel(horizontalVel);
     }
