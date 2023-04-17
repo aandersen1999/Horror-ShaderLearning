@@ -332,7 +332,7 @@ public class Player : MonoBehaviour
     {
         Vector2 intendedAir = intendedVel.normalized * walkSpeed;
 
-        horizontalVel = Vector2.MoveTowards(horizontalVel, intendedAir, (acceleration / 4) * Time.deltaTime);
+        horizontalVel = Vector2.MoveTowards(horizontalVel, intendedAir, (acceleration * .25f) * Time.deltaTime);
 
         SetHVel(horizontalVel);
     }
