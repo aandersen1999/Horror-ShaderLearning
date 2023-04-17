@@ -158,7 +158,6 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        Vector3 vel = CalcMovement();
         cc.Move(CalcMovement() * Time.deltaTime);
     }
 
@@ -247,7 +246,7 @@ public class Player : MonoBehaviour
             return true;
         }
 
-        transform.position += Vector3.down * dist;
+        verticalVel = -dist / Time.deltaTime;
         return false;
     }
 
