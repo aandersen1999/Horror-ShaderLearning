@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
 
     public event Action OnFoundInteractable;
     public event Action OnLostInteractable;
+    public event Action<float> OnHealthChanged;
 
     #region Monobehavior
     private void Awake()
@@ -71,7 +72,6 @@ public class Player : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         Assert.IsNotNull(cam);
-        //Assert.IsNotNull(eyeSight);
         Assert.IsNotNull(cc);
 
         cam.fieldOfView = fov;
