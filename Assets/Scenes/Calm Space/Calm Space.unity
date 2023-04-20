@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -5005,7 +5005,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -15118,14 +15118,6 @@ PrefabInstance:
     - target: {fileID: 258192711645894792, guid: 3f304c49eaaf1164981783e7cb1dd2e8, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 258192711645894793, guid: 3f304c49eaaf1164981783e7cb1dd2e8, type: 3}
-      propertyPath: m_StepOffset
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 258192711645894794, guid: 3f304c49eaaf1164981783e7cb1dd2e8, type: 3}
-      propertyPath: snapToGroundRange
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 258192711645894795, guid: 3f304c49eaaf1164981783e7cb1dd2e8, type: 3}
       propertyPath: m_RootOrder

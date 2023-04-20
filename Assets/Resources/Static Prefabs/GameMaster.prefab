@@ -51,6 +51,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: 2e4e591d51f60de4c93d8e12d196d50e, type: 2}
   - {fileID: 11400000, guid: e4a4fcb2f0290d14c96b5791563ccaa7, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 2c1ba2b7efd734246b224ec3525736fa, type: 2}
   UIPrefab: {fileID: 2589814459748122967, guid: 67560ddfb996df04db6ec422f55974f0, type: 3}
 --- !u!114 &2907445128486666457
 MonoBehaviour:

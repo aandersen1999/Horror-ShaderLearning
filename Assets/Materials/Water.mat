@@ -108,8 +108,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Flowing_Speed_1: 0.2
-    - _Flowing_Speed_2: -0.1
+    - _Flowing_Speed_1: 0.1
+    - _Flowing_Speed_2: -0.2
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0

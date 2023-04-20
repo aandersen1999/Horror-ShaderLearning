@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     private const float magDeadZone = .05f;
 
     private CharacterController cc;
+    private GroundData groundData;
 
     private InputActions control;
     private InputActions.PlayerMapActions actions;
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour
     {
         control = new InputActions();
         actions = control.PlayerMap;
+        groundData = GetComponent<GetGroundData>().Data;
     }
 
     private void Start()
@@ -159,6 +161,7 @@ public class Player : MonoBehaviour
         }
 
         cc.Move(CalcMovement() * Time.deltaTime);
+        //Debug.Log(GetGroundAngle());
     }
 
     private void OnValidate()
@@ -170,7 +173,7 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(camTransform.position, camTransform.forward * checkObjectRange);
-        Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * snapToGroundRange);
+        
 
     }
     #endregion
@@ -228,8 +231,11 @@ public class Player : MonoBehaviour
     private void UpdateWalking()
     {
         Vector2 vel = horizontalVel;
+        float multiplier = SetSpeedMultiplier();
+
         vel = Vector2.MoveTowards(vel, Vector2.zero, acceleration * Time.deltaTime);
-        vel = Vector2.MoveTowards(vel, intendedVel, (acceleration * 2) * Time.deltaTime);
+        vel = Vector2.MoveTowards(vel, intendedVel * multiplier, (acceleration * 2) * Time.deltaTime);
+        
         SetHVel(vel);
     }
 
@@ -240,13 +246,13 @@ public class Player : MonoBehaviour
             SetPlayerState(PlayerState.Jumping);
             return true;
         }
-        if (!SnapToGround(out float dist))
+        if (!groundData.hitThisFrame)
         {
             SetPlayerState(PlayerState.FreeFall);
             return true;
         }
 
-        verticalVel = -dist / Time.deltaTime;
+        verticalVel = -groundData.distance / Time.deltaTime;
         return false;
     }
 
@@ -389,15 +395,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool SnapToGround(out float distance)
+    private float GetGroundAngle()
     {
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out RaycastHit hit, snapToGroundRange))
-        {
-            distance = hit.distance;
-            return true;
-        }
-        distance = 0.0f;
-        return false;
+        Vector3 v3Hvel = new(horizontalVel.x, 0, horizontalVel.y);
+        return Vector3.Angle(v3Hvel.normalized, groundData.normal);
+    }
+
+    private float SetSpeedMultiplier()
+    {
+        float angle = GetGroundAngle();
+
+        float lerp = Mathf.InverseLerp(45, 135, angle);
+        lerp = 1 - lerp;
+        lerp += .5f;
+        Debug.Log(lerp);
+        return lerp;
+        
     }
 
     #endregion

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 258192711645894795}
   - component: {fileID: 258192711645894794}
   - component: {fileID: 3380560802067052818}
+  - component: {fileID: 1512106624147850325}
   - component: {fileID: 258192711645894793}
   - component: {fileID: 855012228521374193}
   m_Layer: 0
@@ -66,9 +67,9 @@ MonoBehaviour:
   fov: 60
   mouseSensitivity: 0.1
   maxLookAngle: 85
-  eyeSightRange: 8
-  checkObjectRange: 3
   lockCamera: 0
+  snapToGroundRange: 0.5
+  checkObjectRange: 3
   intendedVel: {x: 0, y: 0}
   interactObject: {fileID: 0}
 --- !u!114 &3380560802067052818
@@ -88,6 +89,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b0dd55ca632674942b363500111d78cb, type: 3}
   - {fileID: 8300000, guid: c79265fad227dd84aab3914e6f0d65fc, type: 3}
   - {fileID: 8300000, guid: 5d4ff08833523114d97e296be4420b5c, type: 3}
+--- !u!114 &1512106624147850325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258192711645894792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4335ffd193e7adf4988f1f48121a5619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundDetectionRange: 0.5
 --- !u!143 &258192711645894793
 CharacterController:
   m_ObjectHideFlags: 0
@@ -102,7 +116,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.1
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
