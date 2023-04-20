@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54efcc173e4043e47ac3e361e0654808, type: 3}
   m_Name: Calm Space
   m_EditorClassIdentifier: 
-  bgm: {fileID: 0}
+  bgm: {fileID: 8300000, guid: 0a124be1f72e7f849b032bfbaf114995, type: 3}

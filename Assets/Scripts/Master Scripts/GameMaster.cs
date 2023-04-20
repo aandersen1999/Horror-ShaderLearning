@@ -26,21 +26,23 @@ public class GameMaster : Singleton<GameMaster>
         {
             audio_Manager = gameObject.AddComponent<AudioManager>();
         }
+        
     }
 
     private void Start()
     {
         Instantiate(UIPrefab);
+        LoadSceneData(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += LoadSceneData;
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= LoadSceneData;
     }
 
     private void Update()
@@ -49,7 +51,7 @@ public class GameMaster : Singleton<GameMaster>
     }
     #endregion
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void LoadSceneData(Scene scene, LoadSceneMode mode)
     {
 
         try
