@@ -67,6 +67,10 @@ public class GameMaster : Singleton<GameMaster>
         {
             bgm = null;
         }
+        catch (NullReferenceException)
+        {
+            bgm = null;
+        }
         Audio_Manager.OverrideBGM(bgm);
 
 

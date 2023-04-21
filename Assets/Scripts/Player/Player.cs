@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CheckForObject();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (actions.Interact.ReadValue<bool>())
         {
             if(interactObject != null)
             {
@@ -161,7 +161,6 @@ public class Player : MonoBehaviour
         }
 
         cc.Move(CalcMovement() * Time.deltaTime);
-        //Debug.Log(GetGroundAngle());
     }
 
     private void OnValidate()
@@ -408,7 +407,6 @@ public class Player : MonoBehaviour
         float lerp = Mathf.InverseLerp(45, 135, angle);
         lerp = 1 - lerp;
         lerp += .5f;
-        Debug.Log(lerp);
         return lerp;
         
     }
