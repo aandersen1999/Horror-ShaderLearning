@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public Vector2 intendedVel = Vector2.zero;
     private Vector2 horizontalVel = Vector2.zero;
     public Vector2 HorizontalVel { get { return horizontalVel; } }
+    public Vector3 HorizontalVelV3 { get { return new Vector3(horizontalVel.x, 0, horizontalVel.y); } }
     private float verticalVel = -10.0f;
     private float intendedMag = 0.0f;
     private PlayerState state = PlayerState.Idle;
