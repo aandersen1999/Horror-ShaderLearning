@@ -25,7 +25,7 @@ public class BillBoardSprite : MonoBehaviour
 
     private void OnDisable()
     {
-        if (!GameMaster.InstanceIsNull())
+        if (!GameMaster.IsInstanceNull)
         {
             GameMaster.Instance.OnChangeMainCam -= SwitchMainCamera;
         }

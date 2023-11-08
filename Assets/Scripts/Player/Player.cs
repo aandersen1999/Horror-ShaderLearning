@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [Header("Raycast Ranges")]
     [SerializeField] private float snapToGroundRange = 5.0f;
     [SerializeField] private float checkObjectRange = 3.0f;
+    [SerializeField] private LayerMask checkObjectsMask;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -59,9 +60,13 @@ public class Player : MonoBehaviour
     [SerializeField]private Interactable interactObject;
     public Interactable InteractObject { get { return interactObject; } }
 
-    public event Action OnFoundInteractable;
+    public event Action<Interactable> OnFoundInteractable;
+    public event Action<Interactable> OnInteractWithObject;
     public event Action OnLostInteractable;
+
     public event Action<float> OnHealthChanged;
+    public event Action<PlayerState> OnStateChange;
+
 
     #region Monobehavior
     private void Awake()
@@ -114,7 +119,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CheckForObject();
-        if (actions.Interact.ReadValue<bool>())
+        if (actions.Interact.triggered)
         {
             if(interactObject != null)
             {
@@ -190,6 +195,7 @@ public class Player : MonoBehaviour
                 break;
         }
         state = newState;
+        OnStateChange?.Invoke(state);
     }
 
     private void SetYVelOnHSpeed(float yValue, float multiplier)
@@ -371,18 +377,17 @@ public class Player : MonoBehaviour
     #region raycast checks
     private void CheckForObject()
     {
-        int layermask = 1 << 6;
         bool sawInteractableLastFrame = interactObject != null;
-
+        Interactable previousFrameInteractable = interactObject;
         interactObject = null;
 
-        if (Physics.Raycast(camTransform.position, camTransform.TransformDirection(Vector3.forward), out RaycastHit hit, checkObjectRange, layermask))
+        if (Physics.Raycast(camTransform.position, camTransform.TransformDirection(Vector3.forward), out RaycastHit hit, checkObjectRange, checkObjectsMask))
         {
             if(hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out Interactable interact))
             {
                 interactObject = interact;
-                if (!sawInteractableLastFrame)
-                    OnFoundInteractable?.Invoke();
+                if (!sawInteractableLastFrame && interactObject != previousFrameInteractable)
+                    OnFoundInteractable?.Invoke(interactObject);
             }
             else if (sawInteractableLastFrame)
             {

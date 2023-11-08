@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3a3a8a013fbe54e84ddc432d897942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerPrefab>k__BackingField: {fileID: 258192711645894794, guid: 3f304c49eaaf1164981783e7cb1dd2e8, type: 3}
   bgm: {fileID: 8300000, guid: b147f176ed84f164ca4b7a3d8d8b15fc, type: 3}
   datas:
   - {fileID: 0}
@@ -54,7 +55,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 2c1ba2b7efd734246b224ec3525736fa, type: 2}
-  UIPrefab: {fileID: 2589814459748122967, guid: 67560ddfb996df04db6ec422f55974f0, type: 3}
+  UIPrefab: {fileID: 162979167656651339, guid: 67560ddfb996df04db6ec422f55974f0, type: 3}
+  spawnerIDForNextRoom: 0
 --- !u!114 &2907445128486666457
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 10498
+  controlID: 4651
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 10499
+  controlID: 4652
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 10500
+  controlID: 4653
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -213,8 +213,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
-    y: 135
+    x: 0
+    y: 73
     width: 321
     height: 645
   m_ViewDataDictionary: {fileID: 0}
@@ -226,7 +226,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 98faffffa2760000
+      m_ExpandedIDs: e04bffffa8d7ffffecfaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -300,8 +300,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2242
-    y: 135
+    x: 322
+    y: 73
     width: 1129
     height: 645
   m_ViewDataDictionary: {fileID: 0}
@@ -498,16 +498,16 @@ MonoBehaviour:
   m_WindowGUID: 9bb5af3b90d774445863870ccf1b06be
   m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
-  m_SceneIsLit: 1
+  m_SceneIsLit: 0
   m_SceneLighting: 1
   m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.08512199, y: -6.823783, z: 164.97862}
+    m_Target: {x: -5.4387674, y: 6.13283, z: -1.4961534}
     speed: 2
-    m_Value: {x: 0.08512199, y: -6.823783, z: 164.97862}
+    m_Value: {x: -5.4387674, y: 6.13283, z: -1.4961534}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -554,13 +554,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.34536994, y: -0.0715518, z: 0.02429392, w: 0.93582}
+    m_Target: {x: 0.303164, y: 0.44145662, z: -0.16426608, w: 0.82879806}
     speed: 2
-    m_Value: {x: 0.34524062, y: -0.07152501, z: 0.024284825, w: 0.9354696}
+    m_Value: {x: 0.30306068, y: 0.44130614, z: -0.1642101, w: 0.8285156}
   m_Size:
-    m_Target: 8.716361
+    m_Target: 0.4789381
     speed: 2
-    m_Value: 8.716361
+    m_Value: 0.4789381
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -726,6 +726,7 @@ MonoBehaviour:
     },\n        {\n            \"m_Id\": \"f127ca533a86499e9458c699629a3039\"\n       
     },\n        {\n            \"m_Id\": \"d45b7e10145444b98eb366bc0db2d732\"\n       
     },\n        {\n            \"m_Id\": \"de2b2eccd1f9452fafdd2227275bd08a\"\n       
+    },\n        {\n            \"m_Id\": \"e9d1b36aafa04097af412bd13bad046e\"\n       
     }\n    ],\n    \"m_GroupDatas\": [\n        {\n            \"m_Id\": \"b8125b5774c3413eae1e56233aa437dd\"\n       
     },\n        {\n            \"m_Id\": \"aaa643a7cabe435887afc784f927770b\"\n       
     }\n    ],\n    \"m_StickyNoteDatas\": [],\n    \"m_Edges\": [\n        {\n           
@@ -1027,6 +1028,7 @@ MonoBehaviour:
     },\n            {\n                \"m_Id\": \"4cd4eccd1a4b4e4cbf613f23dec37363\"\n           
     },\n            {\n                \"m_Id\": \"f68f74c8221145f0b827ecc40d088d8a\"\n           
     },\n            {\n                \"m_Id\": \"7451f91a4ab24056b0861432b6f91a78\"\n           
+    },\n            {\n                \"m_Id\": \"e9d1b36aafa04097af412bd13bad046e\"\n           
     }\n        ]\n    },\n    \"m_PreviewData\": {\n        \"serializedMesh\": {\n           
     \"m_SerializedMesh\": \"{\\\"mesh\\\":{\\\"instanceID\\\":0}}\",\n           
     \"m_Guid\": \"\"\n        },\n        \"preventRotation\": false\n    },\n   
@@ -1395,6 +1397,11 @@ MonoBehaviour:
     \"33bf293b832c4417939cff8fccee8993\",\n    \"m_Id\": 0,\n    \"m_DisplayName\":
     \"Ice Volume\",\n    \"m_SlotType\": 1,\n    \"m_Hidden\": false,\n    \"m_ShaderOutputName\":
     \"Out\",\n    \"m_StageCapability\": 3,\n    \"m_BareResource\": false\n}\n\n{\n   
+    \"m_SGVersion\": 0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.Vector1MaterialSlot\",\n   
+    \"m_ObjectId\": \"388eefd1326c4d9eac5ff9dbb9e16106\",\n    \"m_Id\": 0,\n   
+    \"m_DisplayName\": \"Alpha Clip Threshold\",\n    \"m_SlotType\": 0,\n    \"m_Hidden\":
+    false,\n    \"m_ShaderOutputName\": \"AlphaClipThreshold\",\n    \"m_StageCapability\":
+    2,\n    \"m_Value\": 0.5,\n    \"m_DefaultValue\": 0.5,\n    \"m_Labels\": []\n}\n\n{\n   
     \"m_SGVersion\": 0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.DynamicVectorMaterialSlot\",\n   
     \"m_ObjectId\": \"38d35f8d65694058a0fcf56f9620e848\",\n    \"m_Id\": 0,\n   
     \"m_DisplayName\": \"A\",\n    \"m_SlotType\": 0,\n    \"m_Hidden\": false,\n   
@@ -2121,7 +2128,7 @@ MonoBehaviour:
     \"m_ObjectId\": \"90469a04a34c4fc1b6db212455de6a93\",\n    \"m_ActiveSubTarget\":
     {\n        \"m_Id\": \"6c0b8d4ac07a477a96cd35a8b3172370\"\n    },\n    \"m_AllowMaterialOverride\":
     false,\n    \"m_SurfaceType\": 1,\n    \"m_ZTestMode\": 4,\n    \"m_ZWriteControl\":
-    0,\n    \"m_AlphaMode\": 0,\n    \"m_RenderFace\": 2,\n    \"m_AlphaClip\": false,\n   
+    0,\n    \"m_AlphaMode\": 0,\n    \"m_RenderFace\": 2,\n    \"m_AlphaClip\": true,\n   
     \"m_CastShadows\": true,\n    \"m_ReceiveShadows\": true,\n    \"m_CustomEditorGUI\":
     \"\",\n    \"m_SupportVFX\": false\n}\n\n{\n    \"m_SGVersion\": 0,\n    \"m_Type\":
     \"UnityEditor.ShaderGraph.Vector1MaterialSlot\",\n    \"m_ObjectId\": \"909e6a4945d14b559fac30fa090892ad\",\n   
@@ -2711,10 +2718,20 @@ MonoBehaviour:
     0.0,\n        \"e13\": 0.0,\n        \"e20\": 0.0,\n        \"e21\": 0.0,\n       
     \"e22\": 1.0,\n        \"e23\": 0.0,\n        \"e30\": 0.0,\n        \"e31\":
     0.0,\n        \"e32\": 0.0,\n        \"e33\": 1.0\n    }\n}\n\n{\n    \"m_SGVersion\":
-    0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.ReflectionNode\",\n    \"m_ObjectId\":
-    \"eb956fba76274c26a148a952a0892f79\",\n    \"m_Group\": {\n        \"m_Id\":
-    \"\"\n    },\n    \"m_Name\": \"Reflection\",\n    \"m_DrawState\": {\n       
-    \"m_Expanded\": true,\n        \"m_Position\": {\n            \"serializedVersion\":
+    0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.BlockNode\",\n    \"m_ObjectId\":
+    \"e9d1b36aafa04097af412bd13bad046e\",\n    \"m_Group\": {\n        \"m_Id\":
+    \"\"\n    },\n    \"m_Name\": \"SurfaceDescription.AlphaClipThreshold\",\n   
+    \"m_DrawState\": {\n        \"m_Expanded\": true,\n        \"m_Position\": {\n           
+    \"serializedVersion\": \"2\",\n            \"x\": 0.0,\n            \"y\": 0.0,\n           
+    \"width\": 0.0,\n            \"height\": 0.0\n        }\n    },\n    \"m_Slots\":
+    [\n        {\n            \"m_Id\": \"388eefd1326c4d9eac5ff9dbb9e16106\"\n       
+    }\n    ],\n    \"synonyms\": [],\n    \"m_Precision\": 0,\n    \"m_PreviewExpanded\":
+    true,\n    \"m_PreviewMode\": 0,\n    \"m_CustomColors\": {\n        \"m_SerializableColors\":
+    []\n    },\n    \"m_SerializedDescriptor\": \"SurfaceDescription.AlphaClipThreshold\"\n}\n\n{\n   
+    \"m_SGVersion\": 0,\n    \"m_Type\": \"UnityEditor.ShaderGraph.ReflectionNode\",\n   
+    \"m_ObjectId\": \"eb956fba76274c26a148a952a0892f79\",\n    \"m_Group\": {\n       
+    \"m_Id\": \"\"\n    },\n    \"m_Name\": \"Reflection\",\n    \"m_DrawState\":
+    {\n        \"m_Expanded\": true,\n        \"m_Position\": {\n            \"serializedVersion\":
     \"2\",\n            \"x\": -3417.999755859375,\n            \"y\": -93.0,\n           
     \"width\": 207.999755859375,\n            \"height\": 302.00006103515627\n       
     }\n    },\n    \"m_Slots\": [\n        {\n            \"m_Id\": \"6d2f328d9ff54d98938dede52c425478\"\n       
@@ -2884,7 +2901,7 @@ MonoBehaviour:
     \"m_Labels\": [],\n    \"m_ColorMode\": 0,\n    \"m_DefaultColor\": {\n       
     \"r\": 0.5,\n        \"g\": 0.5,\n        \"b\": 0.5,\n        \"a\": 1.0\n   
     }\n}\n\n"
-  m_AssetMaybeChangedOnDisk: 1
+  m_AssetMaybeChangedOnDisk: 0
   m_AssetMaybeDeleted: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -5617,8 +5634,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
-    y: 801
+    x: 0
+    y: 739
     width: 1452
     height: 260
   m_ViewDataDictionary: {fileID: 0}
@@ -5638,22 +5655,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Player
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Player
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Bralex\Documents\GitHub\Horror-ShaderLearning
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 228}
-    m_SelectedIDs: ae810000
-    m_LastClickedID: 33198
-    m_ExpandedIDs: 000000007e77000080770000a477000000ca9a3b
+    scrollPos: {x: 0, y: 180}
+    m_SelectedIDs: 2e750000
+    m_LastClickedID: 29998
+    m_ExpandedIDs: 000000003c7300003475000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5681,7 +5698,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007e7700008077000000ca9a3b
+    m_ExpandedIDs: 000000003c73000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5706,9 +5723,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a2760000
-    m_LastClickedInstanceID: 30370
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 64740000
+    m_LastClickedInstanceID: 29796
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000768400003869ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -5725,7 +5742,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 12}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -5988,8 +6005,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 3373
-    y: 135
+    x: 1453
+    y: 73
     width: 466
     height: 926
   m_ViewDataDictionary: {fileID: 0}
@@ -6002,8 +6019,8 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 30370
-  m_LastVerticalScrollValue: 0
+  m_LastInspectedObjectInstanceID: 29796
+  m_LastVerticalScrollValue: 41
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

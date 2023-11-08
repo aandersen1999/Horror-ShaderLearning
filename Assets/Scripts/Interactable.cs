@@ -17,10 +17,7 @@ public class Interactable : MonoBehaviour
     public UnityEvent OnInteract;
 
     #region Monobehavior
-    protected void Awake()
-    {
-
-    }
+    
 
     protected void Start()
     {
@@ -30,10 +27,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    protected void Update()
-    {
-
-    }
+    
     #endregion
 
     /// <summary>

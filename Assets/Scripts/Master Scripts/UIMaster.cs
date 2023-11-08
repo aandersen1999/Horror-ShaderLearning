@@ -12,7 +12,7 @@ public class UIMaster : Singleton<UIMaster>
 
     [SerializeField] private TMP_Text displayText;
     [SerializeField] private GameObject blackOverlay;
-    [SerializeField] private GameObject crosshairHand;
+    [SerializeField] private GameObject crosshair;
 
     private Coroutine timer;
 
@@ -20,7 +20,7 @@ public class UIMaster : Singleton<UIMaster>
     {
         base.Awake();
 
-        crosshairHand.SetActive(false);
+        //crosshair.SetActive(false);
         BlackScreen(false);
     }
 
@@ -32,7 +32,7 @@ public class UIMaster : Singleton<UIMaster>
 
     private void OnDisable()
     {
-        if (!GameMaster.InstanceIsNull())
+        if (!GameMaster.IsInstanceNull)
         {
             GameMaster.Instance.OnSetNewPlayer -= OnSetNewPlayer;
         }
@@ -57,20 +57,20 @@ public class UIMaster : Singleton<UIMaster>
 
     private void OnSetNewPlayer(Player player)
     {
-        crosshairHand.SetActive(false);
+        //crosshair.SetActive(false);
 
         player.OnFoundInteractable += OnFindInteractable;
         player.OnLostInteractable += OnLoseInteractable;
     }
 
-    private void OnFindInteractable()
+    private void OnFindInteractable(Interactable i)
     {
-        crosshairHand.SetActive(true);
+        //crosshair.SetActive(true);
     }
 
     private void OnLoseInteractable()
     {
-        crosshairHand.SetActive(false);
+        //crosshair.SetActive(false);
     }
 
     private void OnSceneChange(Scene s, LoadSceneMode mode)

@@ -11,7 +11,7 @@ public class GenericObject : Interactable
     [SerializeField] private string message = string.Empty;
     private AudioSource sfxSource;
 
-    protected new void Awake()
+    protected void Awake()
     {
         if (playSound)
         {

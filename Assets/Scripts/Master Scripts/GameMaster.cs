@@ -9,10 +9,13 @@ public class GameMaster : Singleton<GameMaster>
     private AudioManager audio_Manager;
     public AudioManager Audio_Manager { get { return audio_Manager; } }
     public Player PlayerInstance { get; private set; }
+    [field:SerializeField] public Player PlayerPrefab { get; private set; }
 
     [SerializeField] private AudioClip bgm;
     [SerializeField] private List<SceneData> datas = new();
-    [SerializeField] private GameObject UIPrefab;
+    [SerializeField] private UIMaster UIPrefab;
+
+    public int spawnerIDForNextRoom = 0;
 
     public event Action<Player> OnSetNewPlayer;
     public event Action<Camera> OnChangeMainCam;
@@ -31,7 +34,8 @@ public class GameMaster : Singleton<GameMaster>
 
     private void Start()
     {
-        Instantiate(UIPrefab);
+        if(UIMaster.IsInstanceNull)
+            Instantiate(UIPrefab);
         LoadSceneData(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
@@ -43,11 +47,6 @@ public class GameMaster : Singleton<GameMaster>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= LoadSceneData;
-    }
-
-    private void Update()
-    {
-        
     }
     #endregion
 

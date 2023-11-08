@@ -12467,6 +12467,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2907445128486666456, guid: ee56232d0466ee6419cc475bab3cfc9c, type: 3}
+      propertyPath: UIPrefab
+      value: 
+      objectReference: {fileID: 162979167656651339, guid: 67560ddfb996df04db6ec422f55974f0, type: 3}
     - target: {fileID: 2907445128486666459, guid: ee56232d0466ee6419cc475bab3cfc9c, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] private float speed = 20.0f;
+    
 
     private void Update()
     {
