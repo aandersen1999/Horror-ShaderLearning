@@ -62,6 +62,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleFlashLight"",
+                    ""type"": ""Button"",
+                    ""id"": ""e46eaaba-4829-4caa-8255-94d85f23ce68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08d0b2dd-d29d-47ed-82ae-75312f6fb634"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""ToggleFlashLight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -198,6 +218,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerMap_Look = m_PlayerMap.FindAction("Look", throwIfNotFound: true);
         m_PlayerMap_Jump = m_PlayerMap.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerMap_ToggleFlashLight = m_PlayerMap.FindAction("ToggleFlashLight", throwIfNotFound: true);
         // MenuMap
         m_MenuMap = asset.FindActionMap("MenuMap", throwIfNotFound: true);
         m_MenuMap_Newaction = m_MenuMap.FindAction("New action", throwIfNotFound: true);
@@ -264,6 +285,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Look;
     private readonly InputAction m_PlayerMap_Jump;
     private readonly InputAction m_PlayerMap_Interact;
+    private readonly InputAction m_PlayerMap_ToggleFlashLight;
     public struct PlayerMapActions
     {
         private @InputActions m_Wrapper;
@@ -272,6 +294,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_PlayerMap_Look;
         public InputAction @Jump => m_Wrapper.m_PlayerMap_Jump;
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
+        public InputAction @ToggleFlashLight => m_Wrapper.m_PlayerMap_ToggleFlashLight;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,6 +316,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
+                @ToggleFlashLight.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnToggleFlashLight;
+                @ToggleFlashLight.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnToggleFlashLight;
+                @ToggleFlashLight.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnToggleFlashLight;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -309,6 +335,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @ToggleFlashLight.started += instance.OnToggleFlashLight;
+                @ToggleFlashLight.performed += instance.OnToggleFlashLight;
+                @ToggleFlashLight.canceled += instance.OnToggleFlashLight;
             }
         }
     }
@@ -361,6 +390,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnToggleFlashLight(InputAction.CallbackContext context);
     }
     public interface IMenuMapActions
     {

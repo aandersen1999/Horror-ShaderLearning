@@ -12,8 +12,8 @@ public class PlayerSpawner : MonoBehaviour
 
         if(spawnerID == gameMaster.spawnerIDForNextRoom)
         {
-            if(gameMaster.PlayerInstance != null) 
-                gameMaster.PlayerInstance.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            if (gameMaster.PlayerInstance != null)
+                gameMaster.PlayerInstance.ForceSetPositionAndRotation(transform.position, transform.rotation);
             else
                 Instantiate(gameMaster.PlayerPrefab, transform.position, transform.rotation);
         }

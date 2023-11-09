@@ -11,6 +11,8 @@ public class GameMaster : Singleton<GameMaster>
     public Player PlayerInstance { get; private set; }
     [field:SerializeField] public Player PlayerPrefab { get; private set; }
 
+    public PreviousPlayerInfo PreviousPlayerInfo { get; set; }
+
     [SerializeField] private AudioClip bgm;
     [SerializeField] private List<SceneData> datas = new();
     [SerializeField] private UIMaster UIPrefab;
@@ -29,7 +31,8 @@ public class GameMaster : Singleton<GameMaster>
         {
             audio_Manager = gameObject.AddComponent<AudioManager>();
         }
-        
+
+        PreviousPlayerInfo = new(100.0f, false);
     }
 
     private void Start()
@@ -78,6 +81,7 @@ public class GameMaster : Singleton<GameMaster>
     public void SetPlayer(Player player)
     {
         PlayerInstance = player;
+        PlayerInstance.SetPlayerInfo(PreviousPlayerInfo);
         OnSetNewPlayer?.Invoke(player);
     }
 
@@ -91,3 +95,4 @@ public class GameMaster : Singleton<GameMaster>
         SceneManager.LoadScene(index);
     }
 }
+

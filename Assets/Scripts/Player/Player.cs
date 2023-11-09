@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     private InputActions control;
     private InputActions.PlayerMapActions actions;
     [SerializeField]private Interactable interactObject;
+    [SerializeField] private Light flashLight;
     public Interactable InteractObject { get { return interactObject; } }
 
     public event Action<Interactable> OnFoundInteractable;
@@ -114,6 +115,9 @@ public class Player : MonoBehaviour
         }
         OnFoundInteractable = null;
         OnLostInteractable = null;
+
+        if(!GameMaster.IsInstanceNull)
+            GameMaster.Instance.PreviousPlayerInfo = new(health, flashLight.enabled);
     }
 
     private void Update()
@@ -126,6 +130,11 @@ public class Player : MonoBehaviour
                 interactObject.Interact();
             }
         }
+        if (actions.ToggleFlashLight.triggered)
+        {
+            flashLight.enabled = !flashLight.enabled;
+        }
+
 
         AffectedGravity();
 
@@ -169,6 +178,7 @@ public class Player : MonoBehaviour
         cc.Move(CalcMovement() * Time.deltaTime);
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         cam.fieldOfView = fov;
@@ -178,10 +188,9 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(camTransform.position, camTransform.forward * checkObjectRange);
-        
-
     }
-    #endregion
+#endif
+#endregion
 
     private void SetPlayerState(PlayerState newState)
     {
@@ -237,10 +246,10 @@ public class Player : MonoBehaviour
     private void UpdateWalking()
     {
         Vector2 vel = horizontalVel;
-        float multiplier = SetSpeedMultiplier();
+        float slopeMultiplier = SetSlopeSpeedMultiplier();
 
         vel = Vector2.MoveTowards(vel, Vector2.zero, acceleration * Time.deltaTime);
-        vel = Vector2.MoveTowards(vel, intendedVel * multiplier, (acceleration * 2) * Time.deltaTime);
+        vel = Vector2.MoveTowards(vel, intendedVel * slopeMultiplier, (acceleration * 2) * Time.deltaTime);
         
         SetHVel(vel);
     }
@@ -406,7 +415,7 @@ public class Player : MonoBehaviour
         return Vector3.Angle(v3Hvel.normalized, groundData.normal);
     }
 
-    private float SetSpeedMultiplier()
+    private float SetSlopeSpeedMultiplier()
     {
         float angle = GetGroundAngle();
 
@@ -428,6 +437,12 @@ public class Player : MonoBehaviour
         cc.enabled = true;
     }
     #endregion
+
+    public void SetPlayerInfo(PreviousPlayerInfo p)
+    {
+        health = p.Health;
+        flashLight.enabled = p.FlashLightOn;
+    }
 }
 
 public enum PlayerState : byte
@@ -440,4 +455,18 @@ public enum PlayerState : byte
 
     Jumping,
     FreeFall,
+
+
+}
+
+public struct PreviousPlayerInfo
+{
+    public float Health { get; private set; }
+    public bool FlashLightOn { get; private set; }
+
+    public PreviousPlayerInfo(float Health, bool FlashLightOn)
+    {
+        this.Health = Health;
+        this.FlashLightOn = FlashLightOn;
+    }
 }
