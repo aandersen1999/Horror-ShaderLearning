@@ -122,6 +122,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(horizontalVel);
         CheckForObject();
         if (actions.Interact.triggered)
         {
