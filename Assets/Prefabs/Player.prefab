@@ -93,6 +93,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b0dd55ca632674942b363500111d78cb, type: 3}
   - {fileID: 8300000, guid: c79265fad227dd84aab3914e6f0d65fc, type: 3}
   - {fileID: 8300000, guid: 5d4ff08833523114d97e296be4420b5c, type: 3}
+  waterStepSFX:
+  - {fileID: 8300000, guid: 3b19cb67e5df11e418183d37986fc87e, type: 3}
+  - {fileID: 8300000, guid: f0968a41d149f7246b5f8c445ce01221, type: 3}
+  - {fileID: 8300000, guid: a19a45797ff0ed04396d51de073f4423, type: 3}
 --- !u!114 &1512106624147850325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2241836935146912376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0.2, y: -0.4, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

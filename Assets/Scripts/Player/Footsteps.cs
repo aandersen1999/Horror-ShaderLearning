@@ -6,6 +6,7 @@ public class Footsteps : MonoBehaviour
 {
     [SerializeField] private float stepFrequency = .5f;
     [SerializeField] private List<AudioClip> footstepSFX = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> waterStepSFX = new();
 
     private CharacterController cc;
     private Player player;
@@ -50,8 +51,8 @@ public class Footsteps : MonoBehaviour
     private void PlayFootStep()
     {
         int n = Random.Range(0, footstepSFX.Count);
-
-        source.clip = footstepSFX[n];
+        
+        source.clip = (transform.position.y > -.25f) ? footstepSFX[n] : waterStepSFX[n];
         source.PlayOneShot(source.clip);
     }
 }

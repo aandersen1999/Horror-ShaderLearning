@@ -7,17 +7,43 @@ public class Interactable : MonoBehaviour
 {
     public bool canInteract = true;
     public DestroyType destroyType = DestroyType.DontDestroy;
+    [SerializeField] protected bool playAudioOnInteract = false;
+    [SerializeField] protected AudioClip sfx;
 
     public string interactText = "to use";
 
     [Tooltip("Timer to destroy object. Only applies to destroy types aftertimer and timeafterinteract")]
-    [SerializeField]
-    private float timer = 5.0f;
+    [SerializeField] private float timer = 5.0f;
+
+    protected AudioSource sfxSource;
 
     public UnityEvent OnInteract;
 
+    public const int InteractableLayer = 6;
+
     #region Monobehavior
-    
+
+    protected void Awake()
+    {
+        if (playAudioOnInteract)
+        {
+            if(sfx == null)
+            {
+                Debug.LogError($"No audio clip found for interactable object despite requesting to play one. Disabling audio for {gameObject}");
+                playAudioOnInteract = false;
+            }
+            if(!TryGetComponent(out sfxSource))
+            {
+                Debug.LogWarning($"No Audio source component found for interactable object despite requesting to play audio." +
+                    $" Creating AudioSource for object {gameObject}");
+                sfxSource = gameObject.AddComponent<AudioSource>();
+            }
+            
+            sfxSource.clip = sfx;
+        }
+        if (gameObject.layer != InteractableLayer)
+            Debug.LogWarning($"Interactable object {gameObject} is not part of the interactable layer and will not be able to be detected.");
+    }
 
     protected void Start()
     {

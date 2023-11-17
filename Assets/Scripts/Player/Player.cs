@@ -92,27 +92,18 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        if (control != null)
-        {
-            control.Enable();
-        }
+        control?.Enable();
     }
 
     private void OnDisable()
     {
         Cursor.lockState = CursorLockMode.None;
-        if (control != null)
-        {
-            control.Disable();
-        }
+        control?.Disable();
     }
 
     private void OnDestroy()
     {
-        if (control != null)
-        {
-            control.Dispose();
-        }
+        control?.Dispose();
         OnFoundInteractable = null;
         OnLostInteractable = null;
 
@@ -122,7 +113,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(horizontalVel);
         CheckForObject();
         if (actions.Interact.triggered)
         {
@@ -248,9 +238,18 @@ public class Player : MonoBehaviour
     {
         Vector2 vel = horizontalVel;
         float slopeMultiplier = SetSlopeSpeedMultiplier();
+        float accel = acceleration;
 
-        vel = Vector2.MoveTowards(vel, Vector2.zero, acceleration * Time.deltaTime);
-        vel = Vector2.MoveTowards(vel, intendedVel * slopeMultiplier, (acceleration * 2) * Time.deltaTime);
+        //Not actually what I want to do, but just for proof of concept stuff
+        if (transform.position.y < -.25f)
+        {
+            slopeMultiplier *= .5f;
+            accel *= .5f;
+        }
+            
+
+        vel = Vector2.MoveTowards(vel, Vector2.zero, accel* Time.deltaTime);
+        vel = Vector2.MoveTowards(vel, intendedVel * slopeMultiplier, (accel * 2) * Time.deltaTime);
         
         SetHVel(vel);
     }

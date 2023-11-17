@@ -94,5 +94,11 @@ public class GameMaster : Singleton<GameMaster>
     {
         SceneManager.LoadScene(index);
     }
+
+    public void ChangeScene(SceneReference scene, int spawnerID=0)
+    {
+        SceneManager.LoadScene(scene);
+        spawnerIDForNextRoom = spawnerID;
+    }
 }
 

@@ -28,11 +28,13 @@ public class GetGroundData : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * groundDetectionRange);
     }
+#endif
 }
 
 public class GroundData
