@@ -25,7 +25,7 @@ public class PlayerSpawner : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.DrawIcon(transform.position + Vector3.up, "Spawner.png", true);
+        Gizmos.DrawIcon(transform.position + Vector3.up, "Spawner.png");
 
         Vector3 pos = transform.position + Vector3.up;
         Vector3 dir = transform.forward;

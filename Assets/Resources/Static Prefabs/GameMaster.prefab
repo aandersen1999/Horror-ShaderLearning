@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 2c1ba2b7efd734246b224ec3525736fa, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 46c04ac2fb9f7ee4bbad328172b8ca7c, type: 2}
   - {fileID: 11400000, guid: 610936bc77239cb47b7de822235891ab, type: 2}
   UIPrefab: {fileID: 162979167656651339, guid: 67560ddfb996df04db6ec422f55974f0, type: 3}
   spawnerIDForNextRoom: 0

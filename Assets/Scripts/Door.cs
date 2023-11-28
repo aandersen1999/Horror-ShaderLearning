@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +17,8 @@ public class Door : Interactable
     public UnityEvent OnOpen;
     public UnityEvent OnClose;
 
+    [SerializeField] private DoorAudioClips audioClips = new();
+
     public override void Interact()
     {
         if (!locked)
@@ -22,11 +26,13 @@ public class Door : Interactable
             if (open)
             {
                 transform.localEulerAngles = Vector3.up * 0;
+                PlayAudioClip(audioClips.CloseAudio);
                 OnClose?.Invoke();
             }
             else
             {
                 transform.localEulerAngles = Vector3.up * -90.0f;
+                PlayAudioClip(audioClips.OpenAudio);
                 OnOpen?.Invoke();
             }
             open = !open;
@@ -34,16 +40,18 @@ public class Door : Interactable
         else
         {
             UIMaster.Instance.DisplayEventMessage("It's locked");
-            if (playAudioOnInteract)
-            {
-                if (sfxSource.isPlaying)
-                    sfxSource.Stop();
-                sfxSource.Play();
-            }
-                
-
+            PlayAudioClip(audioClips.LockedAudio);
         }
             
         base.Interact();
     }
+
+}
+
+[Serializable]
+struct DoorAudioClips
+{
+    [field:SerializeField] public AudioClip LockedAudio { get; private set; }
+    [field: SerializeField] public AudioClip OpenAudio { get; private set; }
+    [field: SerializeField] public AudioClip CloseAudio { get; private set; }
 }

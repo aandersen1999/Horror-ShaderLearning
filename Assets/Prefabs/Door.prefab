@@ -411,6 +411,10 @@ MonoBehaviour:
   OnClose:
     m_PersistentCalls:
       m_Calls: []
+  audioClips:
+    <LockedAudio>k__BackingField: {fileID: 8300000, guid: dec19ba54f609c04d90d24291bf1464b, type: 3}
+    <OpenAudio>k__BackingField: {fileID: 8300000, guid: b9e5144d34d170c4584432677998d16e, type: 3}
+    <CloseAudio>k__BackingField: {fileID: 8300000, guid: 85232cbad07905340ba2c807f8e115bd, type: 3}
 --- !u!82 &2324449591163847376
 AudioSource:
   m_ObjectHideFlags: 0

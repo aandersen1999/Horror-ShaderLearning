@@ -29,8 +29,8 @@ public class Interactable : MonoBehaviour
         {
             if(sfx == null)
             {
-                Debug.LogError($"No audio clip found for interactable object despite requesting to play one. Disabling audio for {gameObject}");
-                playAudioOnInteract = false;
+                Debug.LogError($"No audio clip found for interactable object {gameObject} despite requesting to play one.");
+                //playAudioOnInteract = false;
             }
             if(!TryGetComponent(out sfxSource))
             {
@@ -79,6 +79,24 @@ public class Interactable : MonoBehaviour
     public virtual string GetInteractText()
     {
         return interactText;
+    }
+
+    protected void PlayAudioClip(AudioClip clip)
+    {
+        if (playAudioOnInteract)
+        {
+            if (clip == null)
+            {
+                Debug.LogError($"Audio clip for interactable object {gameObject} is null. Ignoring audio.");
+                return;
+            }
+            if (sfxSource.isPlaying)
+                sfxSource.Stop();
+            sfxSource.clip = clip;
+            sfxSource.Play();
+        }
+        else
+            Debug.LogWarning($"Tried to play Audio for interactable object {gameObject} despite playAudioOnInteract being disabled. Turn on to play audio.");
     }
 
     private IEnumerator Timer()

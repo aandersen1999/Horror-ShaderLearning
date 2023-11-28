@@ -219,7 +219,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1580144975}
+  m_Mesh: {fileID: 610276863}
 --- !u!33 &68770071
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -3055,7 +3055,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1580144975}
-  m_VersionIndex: 7096
+  m_VersionIndex: 7099
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7670,8 +7670,8 @@ Mesh:
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
+  m_MeshMetrics[0]: 1.0000002
+  m_MeshMetrics[1]: 112.620476
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2

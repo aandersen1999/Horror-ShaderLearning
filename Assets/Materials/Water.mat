@@ -102,8 +102,8 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth: 2.77
-    - _Depth_Fade: 0.17
+    - _Depth: 11.48
+    - _Depth_Fade: 0.09
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -133,7 +133,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Albedo_1: {r: 1, g: 1, b: 1, a: 0}
-    - _Albedo_2: {r: 0.24470694, g: 0.23949805, b: 0.4339623, a: 0}
+    - _Albedo_2: {r: 0.24368194, g: 0.24230155, b: 0.31132078, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

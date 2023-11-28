@@ -29,4 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bath House/Bath House.unity
     guid: 71bca7f57e50cab4fb5b98e3de62ef11
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 7375742cb59edcf41bf9a9e4b998a9ec, type: 2}
