@@ -8,6 +8,8 @@ public class BillBoardSprite : MonoBehaviour
     private Camera cam;
     private SpriteRenderer spr;
 
+    [SerializeField] private bool lockX, lockY = true, lockZ;
+
     private void Awake()
     {
         spr = GetComponent<SpriteRenderer>();       
@@ -34,7 +36,9 @@ public class BillBoardSprite : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 cameraDir = cam.transform.forward;
-        cameraDir.y = 0f;
+        if (lockX) cameraDir.x = 0f;
+        if (lockY) cameraDir.y = 0f;
+        if (lockZ) cameraDir.z = 0f;
         transform.rotation = Quaternion.LookRotation(cameraDir);
     }
 
