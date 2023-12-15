@@ -89,7 +89,7 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 16
   jumpHeight: 4
-  acceleration: 32
+  acceleration: 16
   lockMovement: 0
   gravity: 15
   terminalGravityVel: -15

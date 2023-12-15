@@ -13,6 +13,7 @@ public class UIMaster : Singleton<UIMaster>
     [SerializeField] private TMP_Text displayText;
     [SerializeField] private GameObject blackOverlay;
     [SerializeField] private GameObject crosshair;
+    [SerializeField] private DebugInfo debugInfo;
 
     private Coroutine timer;
 
@@ -37,6 +38,12 @@ public class UIMaster : Singleton<UIMaster>
             GameMaster.Instance.OnSetNewPlayer -= OnSetNewPlayer;
         }
         SceneManager.sceneLoaded -= OnSceneChange;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F3))
+            debugInfo.gameObject.SetActive(!debugInfo.gameObject.activeSelf);
     }
 
     public void DisplayEventMessage(string message)

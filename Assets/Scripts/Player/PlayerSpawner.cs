@@ -19,6 +19,8 @@ public class PlayerSpawner : MonoBehaviour
                 gameMaster.PlayerInstance.ForceSetPositionAndRotation(transform.position, transform.rotation);
             else
                 Instantiate(gameMaster.PlayerPrefab, transform.position, transform.rotation);
+
+            ControllerManager.Instance.LockCursor(true);
         }
     }
 

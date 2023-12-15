@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Assertions;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class Player : MonoBehaviour
 {
@@ -41,7 +42,8 @@ public class Player : MonoBehaviour
     private float yaw = 0.0f;
     private float pitch = 0.0f;
 
-    public Vector2 intendedVel = Vector2.zero;
+    private Vector2 intendedVel = Vector2.zero;
+    public Vector2 IntendedVel { get { return intendedVel; } }
     private Vector2 horizontalVel = Vector2.zero;
     public Vector2 HorizontalVel { get { return horizontalVel; } }
     public Vector3 HorizontalVelV3 { get { return new Vector3(horizontalVel.x, 0, horizontalVel.y); } }
@@ -57,7 +59,7 @@ public class Player : MonoBehaviour
 
     private InputActions control;
     private InputActions.PlayerMapActions actions;
-    [SerializeField]private Interactable interactObject;
+    [SerializeField] private Interactable interactObject;
     [SerializeField] private Light flashLight;
     public Interactable InteractObject { get { return interactObject; } }
 
@@ -72,38 +74,29 @@ public class Player : MonoBehaviour
     #region Monobehavior
     private void Awake()
     {
-        control = new InputActions();
-        actions = control.PlayerMap;
+        
         groundData = GetComponent<GetGroundData>().Data;
+        cc = GetComponent<CharacterController>();
+
+        GameMaster.Instance.SetPlayer(this);
     }
 
     private void Start()
     {
-        cc = GetComponent<CharacterController>();
+        control = ControllerManager.Instance.Controller;
+        actions = control.PlayerMap;
+
         Assert.IsNotNull(cam);
         Assert.IsNotNull(cc);
 
         cam.fieldOfView = fov;
         camTransform = cam.transform;
 
-        GameMaster.Instance.SetPlayer(this);
-    }
-
-    private void OnEnable()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        control?.Enable();
-    }
-
-    private void OnDisable()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        control?.Disable();
     }
 
     private void OnDestroy()
     {
-        control?.Dispose();
+        
         OnFoundInteractable = null;
         OnLostInteractable = null;
 
@@ -129,20 +122,20 @@ public class Player : MonoBehaviour
 
         AffectedGravity();
 
-        Vector2 _move = actions.Move.ReadValue<Vector2>();
-        Vector2 _look = actions.Look.ReadValue<Vector2>();
+        Vector2 move = actions.Move.ReadValue<Vector2>();
+        Vector2 look = actions.Look.ReadValue<Vector2>();
 
         if (!lockCamera)
         {
-            yaw = transform.localEulerAngles.y + _look.x * mouseSensitivity;
-            pitch -= _look.y * mouseSensitivity;
+            yaw = transform.localEulerAngles.y + look.x * mouseSensitivity;
+            pitch -= look.y * mouseSensitivity;
             pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
 
             transform.localEulerAngles = Vector3.up * yaw;
             camTransform.localEulerAngles = Vector3.right * pitch;
         }
 
-        UpdateJoystick(_move);
+        UpdateJoystick(move);
 
         switch (state)
         {
@@ -386,7 +379,7 @@ public class Player : MonoBehaviour
     #region raycast checks
     private void CheckForObject()
     {
-        bool sawInteractableLastFrame = interactObject != null;
+        bool sawInteractableLastFrame = (interactObject != null);
         Interactable previousFrameInteractable = interactObject;
         interactObject = null;
 
