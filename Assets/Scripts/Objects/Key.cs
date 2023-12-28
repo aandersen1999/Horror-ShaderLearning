@@ -7,7 +7,7 @@ public class Key : Interactable, IDataPersistence
     [field:SerializeField] public string DataPersistanceName { get; set; }
     public KeyIDs KeyID;
 
-    private void Start()
+    private new void Start()
     {
         
     }

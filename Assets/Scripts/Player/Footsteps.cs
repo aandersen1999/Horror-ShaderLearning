@@ -5,7 +5,7 @@ using UnityEngine;
 public class Footsteps : MonoBehaviour
 {
     [SerializeField] private float stepFrequency = .5f;
-    [SerializeField] private List<AudioClip> footstepSFX = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> footstepSFX = new();
     [SerializeField] private List<AudioClip> waterStepSFX = new();
 
     private CharacterController cc;
@@ -44,7 +44,7 @@ public class Footsteps : MonoBehaviour
         }
         else
         {
-            stepCycle = 0.0f;
+            stepCycle = stepFrequency;
         }
     }
 

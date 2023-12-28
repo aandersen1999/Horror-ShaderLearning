@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Assertions;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class Player : MonoBehaviour
 {

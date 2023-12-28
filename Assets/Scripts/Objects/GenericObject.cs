@@ -7,11 +7,11 @@ public class GenericObject : Interactable
     [SerializeField] private bool playSound = false;
     [SerializeField] private bool displayMessage = false;
 
-    [SerializeField] private AudioClip sfx;
+    [SerializeField] private new AudioClip sfx;
     [SerializeField] private string message = string.Empty;
-    private AudioSource sfxSource;
+    private new AudioSource sfxSource;
 
-    protected void Awake()
+    protected new void Awake()
     {
         if (playSound)
         {

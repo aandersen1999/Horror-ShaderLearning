@@ -71,6 +71,24 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""c67ca077-3322-48bd-8fd3-2019e488a720"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""74e98679-ee89-4704-a2cf-0d2804de3b12"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +190,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleFlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f596a085-8599-4c95-b004-c9c85e1bd48d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b047763a-de02-48b2-beeb-7431b1c46c90"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseKeyboard"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -219,6 +259,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_PlayerMap_Jump = m_PlayerMap.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_ToggleFlashLight = m_PlayerMap.FindAction("ToggleFlashLight", throwIfNotFound: true);
+        m_PlayerMap_Fire = m_PlayerMap.FindAction("Fire", throwIfNotFound: true);
+        m_PlayerMap_Reload = m_PlayerMap.FindAction("Reload", throwIfNotFound: true);
         // MenuMap
         m_MenuMap = asset.FindActionMap("MenuMap", throwIfNotFound: true);
         m_MenuMap_Newaction = m_MenuMap.FindAction("New action", throwIfNotFound: true);
@@ -286,6 +328,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Jump;
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_ToggleFlashLight;
+    private readonly InputAction m_PlayerMap_Fire;
+    private readonly InputAction m_PlayerMap_Reload;
     public struct PlayerMapActions
     {
         private @InputActions m_Wrapper;
@@ -295,6 +339,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerMap_Jump;
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @ToggleFlashLight => m_Wrapper.m_PlayerMap_ToggleFlashLight;
+        public InputAction @Fire => m_Wrapper.m_PlayerMap_Fire;
+        public InputAction @Reload => m_Wrapper.m_PlayerMap_Reload;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -319,6 +365,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @ToggleFlashLight.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnToggleFlashLight;
                 @ToggleFlashLight.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnToggleFlashLight;
                 @ToggleFlashLight.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnToggleFlashLight;
+                @Fire.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnFire;
+                @Reload.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -338,6 +390,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @ToggleFlashLight.started += instance.OnToggleFlashLight;
                 @ToggleFlashLight.performed += instance.OnToggleFlashLight;
                 @ToggleFlashLight.canceled += instance.OnToggleFlashLight;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -391,6 +449,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnToggleFlashLight(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IMenuMapActions
     {
