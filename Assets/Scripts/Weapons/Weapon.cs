@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public ushort clip;
+
     [SerializeField] private WeaponInfo weaponInfo;
+
+    private Transform camTrans;
+
+    private void OnEnable()
+    {
+        camTrans = Camera.main.transform;
+    }
+
+    protected virtual void FireWeapon(LayerMask mask)
+    {
+        clip--;
+
+        if(Physics.Raycast(camTrans.position, camTrans.forward, out RaycastHit hit, Mathf.Infinity, mask))
+        {
+
+        }
+    }
 
     public static string GetBulletTypeName(BulletType type)
     {

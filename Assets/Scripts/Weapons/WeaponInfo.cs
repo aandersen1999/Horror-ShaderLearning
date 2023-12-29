@@ -8,6 +8,8 @@ public class WeaponInfo : ScriptableObject
     [SerializeField] private string weaponName;
     [SerializeField] private ushort ammoClipSize = 10;
 
+    [SerializeField] private float bloom = 0.0f;
+
     public string WeaponName { get { return weaponName; } }
     public ushort AmmoClipSize { get { return ammoClipSize; } }
 }

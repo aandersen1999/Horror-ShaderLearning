@@ -12,6 +12,9 @@ public class WeaponHandler : MonoBehaviour
     private InputActions.PlayerMapActions actions;
     private WeaponState state;
     [SerializeField] private Weapon heldWeapon;
+    [SerializeField] private LayerMask weaponMask;
+    public LayerMask WeaponMask { get { return weaponMask; } }
+
     [SerializeField] private Light muzzleFlash;
     [SerializeField] private float muzzleFlashIntensity;
 
