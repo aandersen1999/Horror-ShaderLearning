@@ -7,19 +7,20 @@ public class Weapon : MonoBehaviour
     public ushort clip;
 
     [SerializeField] private WeaponInfo weaponInfo;
+    [SerializeField] private Light muzzleFlash;
 
-    private Transform camTrans;
+    private Transform headTrans;
 
     private void OnEnable()
     {
-        camTrans = Camera.main.transform;
+        headTrans = GameMaster.Instance.PlayerInstance.HeadTransform;
     }
 
     protected virtual void FireWeapon(LayerMask mask)
     {
         clip--;
 
-        if(Physics.Raycast(camTrans.position, camTrans.forward, out RaycastHit hit, Mathf.Infinity, mask))
+        if(Physics.Raycast(headTrans.position, headTrans.forward, out RaycastHit hit, Mathf.Infinity, mask))
         {
 
         }

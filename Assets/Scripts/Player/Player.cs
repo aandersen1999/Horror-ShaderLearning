@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
 
     [Header("Camera Attributes")]
     [SerializeField] private Camera cam;
-    [SerializeField] private Transform camTransform;
+    [SerializeField] private Transform headTransform;
+    public Transform HeadTransform { get { return headTransform; } }
     [SerializeField, Range(60.0f, 100.0f)] private float fov = 60.0f;
     [SerializeField] private float mouseSensitivity = 2.0f;
     [SerializeField] private float maxLookAngle = 85.0f;
@@ -88,7 +89,6 @@ public class Player : MonoBehaviour
         Assert.IsNotNull(cc);
 
         cam.fieldOfView = fov;
-        camTransform = cam.transform;
 
     }
 
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
             pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
 
             transform.localEulerAngles = Vector3.up * yaw;
-            camTransform.localEulerAngles = Vector3.right * pitch;
+            headTransform.localEulerAngles = Vector3.right * pitch;
         }
 
         UpdateJoystick(move);
@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(camTransform.position, camTransform.forward * checkObjectRange);
+        Gizmos.DrawRay(headTransform.position, headTransform.forward * checkObjectRange);
     }
 #endif
 #endregion
@@ -381,7 +381,7 @@ public class Player : MonoBehaviour
         Interactable previousFrameInteractable = interactObject;
         interactObject = null;
 
-        if (Physics.Raycast(camTransform.position, camTransform.TransformDirection(Vector3.forward), out RaycastHit hit, checkObjectRange, checkObjectsMask))
+        if (Physics.Raycast(headTransform.position, headTransform.TransformDirection(Vector3.forward), out RaycastHit hit, checkObjectRange, checkObjectsMask))
         {
             if(hit.collider.gameObject != null && hit.collider.gameObject.TryGetComponent(out Interactable interact))
             {
